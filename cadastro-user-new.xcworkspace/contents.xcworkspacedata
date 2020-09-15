@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "container:cadastro-user/AppDelegate.swift">
+   </FileRef>
+   <FileRef
+      location = "container:cadastro-user/Assets.xcassets">
+   </FileRef>
+   <FileRef
+      location = "container:cadastro-user/Base.lproj">
+   </FileRef>
+   <FileRef
+      location = "container:cadastro-user/Info.plist">
+   </FileRef>
+   <FileRef
+      location = "container:cadastro-user/ViewController.swift">
+   </FileRef>
+</Workspace>
