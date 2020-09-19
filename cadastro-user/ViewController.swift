@@ -65,19 +65,6 @@ class ViewController: UIViewController {
         }
     }
     
-    let validityType: String.ValidityType = .email
-    
-//    lazy var textField: UITextField = {
-//        let tf = textFieldEmail
-//        tf!.placeholder = "\(validityType)"
-//        return tf!
-//    }()
-//
-//    lazy var label: UILabel = {
-//        let label = UILabel()
-//        return label
-//    }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         textFieldEmail.delegate = self
@@ -85,51 +72,42 @@ class ViewController: UIViewController {
         buttonSignUpUI.isEnabled = false
     }
     
-//    func setupViews() {
-//        navigationItem.title = " "
-//        view.backgroundColor = .white
-//
-//        view.addSubview(textField)
-//        view.addSubview(label)
-//    }
-    
-    func handleTextChange() {
-        guard let text = textFieldEmail.text else {return}
-            print(text)
-            switch validityType{
-            case .email:
-                if text.isValid(validityType){
-                    print("Valid \(validityType)")
-                } else {
-                    print("Not a valid \(validityType)")
-                }
-            }
+    func isValidEmail(_ email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z.]{2,64}"
+        
+        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailPred.evaluate(with: email)
     }
-
     
+    func isValidPassword(_ password: String) -> Bool {
+        let passwordRegEx = "[A-Za-z0-9]{6,6}"
+
+        let passwordPred = NSPredicate(format:"SELF MATCHES %@", passwordRegEx)
+        return passwordPred.evaluate(with: password)
+    }
     
     private func validateInfo() -> Bool {
         let user = User(email: textFieldEmail.text!,
                         password: textFieldPassword.text!)
         
         if textFieldEmail.text == nil ||
-            textFieldEmail.text!.isEmpty
+            textFieldEmail.text!.isEmpty || !isValidEmail(textFieldEmail.text!)
         {
             print("Valid e-mail is required!")
             return false
         }
         if textFieldPassword.text == nil ||
-            textFieldPassword.text!.isEmpty
+            textFieldPassword.text!.isEmpty || !isValidPassword(textFieldPassword.text!)
         {
             print("Password is required!")
             return false
         }
-        if (textFieldPassword.text?.count)! > 6 ||
-            (textFieldPassword.text?.count)! < 6
-        {
-            print("The password must have 6 chars")
-            return false
-        }
+//        if (textFieldPassword.text?.count)! > 6 ||
+//            (textFieldPassword.text?.count)! < 6
+//        {
+//            print("The password must have 6 chars")
+//            return false
+//        }
         print("User successfully signed up! ")
         buttonSignUpUI.isEnabled = true
         user.email = textFieldEmail.text ?? "email inválido"
@@ -157,28 +135,9 @@ extension ViewController: UITextFieldDelegate {
     }
 }
 
-extension String {
-    
-    enum ValidityType {
-        case email
-    }
-    enum Regex: String {
-        case email = "[A-Z0-9a-z._-+%]+@[A-Z0-9a-z._-]+\\.[A-Za-z]{2,64}"
-    }
-    func isValid(_ validityType: ValidityType) -> Bool {
-        let format = "SELF MATCHES %@"
-        var regex = ""
-        
-        switch validityType {
-            case .email:
-                regex = Regex.email.rawValue
-       }
-        return NSPredicate(format: format, regex).evaluate(with: self)
-    }
-}
 
 
+let user = User(email: "email@email.com", password:"123456")
 
-// let user = User(email: "email@email.com", password:"123456")
 
 
