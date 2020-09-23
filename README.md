@@ -7,19 +7,13 @@
 
 #### Requisitos de Layout:
 
-  * Composição da tela: 
+   Composição da tela: 
 
       * campo para preenchimento de e-mail 
       * campo para preenchimento de senha
       * botão para sign up
-      
-  * Utilizar como inspiração o layout de calculadora da Apple;
-       * obs: é somente para inspiração.
-       
-  * Os botões precisam ter fundo colorido;
-  
-  * Como desafio extra, deixar o botão arredondado.
-
+ 
+ 
 #### Requisitos de Funcionalidades
 
   * É necessário que o primeiro campo seja preenchido por um e-mail válido;
