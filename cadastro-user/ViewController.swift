@@ -33,7 +33,6 @@ class User: AddUser {
     }
 }
 
-
 class userData {
     private var userList = [AddUser]()
     
@@ -80,7 +79,7 @@ class ViewController: UIViewController {
     }
     
     func isValidPassword(_ password: String) -> Bool {
-        let passwordRegEx = "[A-Za-z0-9]{6,6}"
+        let passwordRegEx = "[A-Za-z0-9]{6,12}"
 
         let passwordPred = NSPredicate(format:"SELF MATCHES %@", passwordRegEx)
         return passwordPred.evaluate(with: password)
@@ -89,25 +88,16 @@ class ViewController: UIViewController {
     private func validateInfo() -> Bool {
         let user = User(email: textFieldEmail.text!,
                         password: textFieldPassword.text!)
-        
-        if textFieldEmail.text == nil ||
-            textFieldEmail.text!.isEmpty || !isValidEmail(textFieldEmail.text!)
+        if !isValidEmail(textFieldEmail.text!)
         {
             print("Valid e-mail is required!")
             return false
         }
-        if textFieldPassword.text == nil ||
-            textFieldPassword.text!.isEmpty || !isValidPassword(textFieldPassword.text!)
+        if !isValidPassword(textFieldPassword.text!)
         {
             print("Password is required!")
             return false
         }
-//        if (textFieldPassword.text?.count)! > 6 ||
-//            (textFieldPassword.text?.count)! < 6
-//        {
-//            print("The password must have 6 chars")
-//            return false
-//        }
         print("User successfully signed up! ")
         buttonSignUpUI.isEnabled = true
         user.email = textFieldEmail.text ?? "email inválido"
