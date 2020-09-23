@@ -1,7 +1,7 @@
 # projetctSignUpForm
 
 
-## Este é um projeto que consiste na criação de uma calculadora para iOS, realizado no curso de Desenvolvimento iOS, do Santander Mobile Coders iOS 2020.
+## Este é um projeto que consiste na criação de um form de Login para iOS, realizado no curso de Desenvolvimento iOS, do Santander Mobile Coders iOS 2020.
 
 ###  Projeto de tela de login básica em iOS. Abaixo estão descritas as etapas necessárias para o desenvolvimento.
 
@@ -46,6 +46,7 @@
 
 ### A Tela de Login: 
 
+<img width="200" alt="Simulador_TelaLogIn" src="https://user-images.githubusercontent.com/55468847/94040046-5fbd2180-fdc0-11ea-984a-027612d29bae.png">
 
  - [X] formatação dos campos por regex
  
